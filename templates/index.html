@@ -1,0 +1,501 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Meheca</title>
+    <link rel="stylesheet" type="text/css" href={% static "css/master.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "css/color/color-1.css" %} id="color">
+    <link rel="shortcut icon" href={% static  "images/short_icon.png" %}>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- LOADER -->
+    <div class="loader">
+        <div class="cssload-svg"><img src={%static "images/42-3.gif" %} alt="image">
+        </div>
+    </div>
+    <!--LOADER-->
+
+    <!-- HEADER -->
+    <header id="main_header">
+        <nav class="navbar navbar-default navbar-sticky bootsnav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Start Header Navigation -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#navbar-menu"> <i class="fa fa-bars"></i>
+                            </button>
+                            <a class="navbar-brand" href="index.html"><img src={%static "images/logo.png" %} class="logo" alt="">
+                            </a>
+                        </div>
+                        <!-- End Header Navigation -->
+                        <div class="collapse navbar-collapse" id="navbar-menu">
+                            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+
+                                <li class="active"> <a href="index.html">Home</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/contact">Contact Us</a></li>
+
+                                <!-- border: 1px solid #fff;     -->
+                                <!-- <li class="btn btn-link" style="height: 30px; margin-bottom: 30px; margin-top: 30px; border: 1px solid #1fb7a6; border-radius: 5px; color: #fff; background: #1fb7a6;"><a href="add-listing.html">Add Listing</a></li> -->
+
+                                <a data-toggle="modal" data-target="#myModal" style="padding-left: 30px;"><button
+                                        type="button" class="btn-lg"
+                                        style="margin-top: 18px; background-color: #1FB7A6; color: #ffffff; border-color: #1FB7A6; ">Share
+                                        Resources</button></a>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- HEADER  -->
+
+    <!-- Large modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resourceModalTitle">Resource Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/resource" method='post'>
+            <div class="form-group">
+              <label for="name">name</label>
+              <input type="text" class="form-control" id="name" name="name"
+                placeholder="Enter your name" Required>
+            </div>
+            <div class="form-group">
+              <label for="phone">phone</label>
+              <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Your phone no."
+                Required>
+            </div>
+            <div class="form-group">
+              <label for="catagory">catagory</label>
+              <input type="text" class="form-control" id="catagory" name="catagory" placeholder="Choose Catagory"
+                Required>
+            </div>
+            <div class="form-group">
+              <label for="area">area</label>
+              <input type="area" class="form-control" id="area" name="area" placeholder="Enter your area" Required>
+            </div>
+            <div class="form-group">
+              <label for="details">details</label>
+              <input type="details" class="form-control" id="details" name="details" placeholder="Enter resource details"
+                Required>
+            </div>
+            
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Banner -->
+    <section id="banner" class="parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="property-search">
+                        <h1>Find Resources Here</h1>
+                        <p>Help To Save Life</p>
+                        <div class="advance-search">
+                            <div class="group-button-search"><i class="fa fa-bars" aria-hidden="true"></i>
+                                <!-- <a data-toggle="collapse" href=".search-propertie-filters" class="more-filter"> <i class="fa fa-bars" aria-hidden="true"></i> </a> -->
+                            </div>
+                            <div class="dir-search">
+                                <div class="single-query form-group" style="padding-right: 15px; width: 50%;">
+                                    <div class="intro">
+                                        <select>
+                                            <option class="active">Category...</option>
+                                            <option>Oxygen</option>
+                                            <option>Ambulance</option>
+                                            <option>Food Delivery</option>
+                                            <option>Blood & Plasma</option>
+                                            <option>Medicine & Equipments</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- <div class="single-query form-group">
+                              <input type="text" class="keyword-input" placeholder="Enter keyword..." required="">
+                          </div> -->
+                                <div class="single-query form-group" style="width: 50%;">
+                                    <div class="intro">
+                                        <select>
+                                            <option selected="" value="any">Area</option>
+                                            <option>Location - 1</option>
+                                            <option>Location - 2</option>
+                                            <option>Location - 3</option>
+                                            <option>Location - 4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-btn">
+                                <button>Search <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-propertie-filters collapse">
+                <div class="container-2">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="search-form-group white">
+                                <input type="checkbox" name="check-box">
+                                <span>Wifi</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="search-form-group white">
+                                <input type="checkbox" name="check-box">
+                                <span>Park</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="search-form-group white">
+                                <input type="checkbox" name="check-box">
+                                <span>Schools</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="search-form-group white">
+                                <input type="checkbox" name="check-box">
+                                <span>Grounds</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="search-form-group white">
+                                <input type="checkbox" name="check-box">
+                                <span>Masque</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="search-form-group white">
+                                <input type="checkbox" name="check-box">
+                                <span>Hospitals</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="search-form-group white">
+                                <input type="checkbox" name="check-box">
+                                <span>Transport</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="search-form-group white">
+                                <input type="checkbox" name="check-box">
+                                <span>Security</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner-icons">
+            <ul>
+                <li><a href="#!"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+                <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
+                <li><a href="#!"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+            </ul>
+        </div>
+    </section>
+    <!-- Banner -->
+
+    <!-- Directory Category -->
+    <section id="directory-category" class="p_b70 p_t70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 directory-category-heading">
+                    <h2>Directory <span>Category</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="directory-category-box text-center"> <span><i class="fa fa-glass"
+                                aria-hidden="true"></i></span>
+                        <a href="restaurant.html">
+                            <h3>Oxygen</h3>
+                        </a>
+                        <p>152,546</p>
+                    </div>
+                    <div class="directory-category-box text-center"> <span><i class="fa fa-home"
+                                aria-hidden="true"></i></span>
+                        <a href="real-estate.html">
+                            <h3>Ambulance</h3>
+                        </a>
+                        <p>35,366</p>
+                    </div>
+                    <div class="directory-category-box text-center"> <span><i class="fa fa-futbol-o"
+                                aria-hidden="true"></i></span>
+                        <a href="sport.html">
+                            <h3>Food Delivery</h3>
+                        </a>
+                        <p>2,546</p>
+                    </div>
+                    <div class="directory-category-box text-center"> <span><i class="fa fa-female"
+                                aria-hidden="true"></i></span>
+                        <a href="beauty-spa.html">
+                            <h3>Blood & Plasma</h3>
+                        </a>
+                        <p>1,546</p>
+                    </div>
+                    <div class="directory-category-box text-center"> <span><i class="fa fa-car"
+                                aria-hidden="true"></i></span>
+                        <a href="vehicles.html">
+                            <h3>Medicines & Equipments</h3>
+                        </a>
+                        <p>2, 34, 546</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-about">
+                        <img src={% static  "images/logo-footer.png" %} alt="image">
+                        <p>Lorem ipsum dolor amet consectur adipiscing elit sed do eiusmod tempor incididunt. Lorem
+                            ipsum dolor amet consectur adipiscing, Lorem ipsum dolor amet consectur adipiscing elit sed
+                            do eiusmod tempor incididunt...</p>
+                        <a href="about.html">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-links">
+                        <h3>Useful <span>Links</span></h3>
+                        <ul>
+                            <li><a href="index.html">Home</a>
+                            </li>
+                            <li><a href="listing-3.html">Browse Category</a>
+                            </li>
+                            <li><a href="index.html">Pages</a>
+                            </li>
+                            <li><a href="blog.html">Our Blog</a>
+                            </li>
+                            <li><a href="listing.html">Listing</a>
+                            </li>
+                            <li><a href="contact.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-links">
+                        <h3>Get in <span>Touch</span></h3>
+                        <ul>
+                            <li><a href="#"><span><i class="fa fa-phone" aria-hidden="true"></i></span> <span>+(10) 123
+                                        456 7896</span></a>
+                            </li>
+                            <li><a href="#"><span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                    <span>support@find_do.com</span></a>
+                            </li>
+                            <li><a href="#"><span><i class="fa fa-globe" aria-hidden="true"></i></span>
+                                    <span>wwww.finddodirectory.com</span></a>
+                            </li>
+                            <li><a href="#"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> <span>Find
+                                        Do, 06 Highley St, Victoria, Australia.</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-links">
+                        <h3>Latest <span>News</span></h3>
+                        <div class="footer-latest">
+                            <a href="#"><img src={% static  "images/footer-latest-1.jpg" %} alt="image">
+                            </a>
+                            <a href="#"><img src={% static  "images/footer-latest-2.jpg" %} alt="image">
+                            </a>
+                            <a href="#"><img src={% static  "images/footer-latest-3.jpg" %} alt="image">
+                            </a>
+                            <a href="#"><img src={% static  "images/footer-latest-4.jpg" %} alt="image">
+                            </a>
+                            <a href="#"><img src={% static  "images/footer-latest-5.jpg" %} alt="image">
+                            </a>
+                            <a href="#"><img src={% static  "images/footer-latest-6.jpg" %}alt="image">
+                            </a>
+                            <a href="#"><img src={% static  "images/footer-latest-7.jpg" %} alt="image">
+                            </a>
+                            <a href="#"><img src={% static  "images/footer-latest-8.jpg" %} alt="image">
+                            </a>
+                            <a href="#"><img src={% static  "images/footer-latest-9.jpg" %} alt="image">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="footer-newsletter">
+                    <div class="col-md-5">
+                        <span>Subscribe</span>
+                        <h2>to our newsletter</h2>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="sub-newsletter">
+                            <input type="email" name="email" placeholder="Enter your email address...." required="">
+                            <button>Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="footer-copyright">
+                        <p>Copyright 2017 - Find Do Directory All Rights Reserved. Designed by <a
+                                href="../../../user/99_design.html">99_Design.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!-- Footer -->
+
+    <!-- Popups -->
+    <section id="best-thing-model">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">United State</h4>
+                        <ul class="best-things-listing">
+                            <li><a href="#">15 Cities,</a>
+                            </li>
+                            <li><a href="#">130 listings,</a>
+                            </li>
+                            <li><a href="#">View 6753</a>
+                            </li>
+                        </ul>
+                        <img src={% static  "images/stars-2.png" %} alt="image">
+                    </div>
+                    <div class="modal-body">
+
+                        <div id="best-thing-slider" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <img src={% static  "images/best-thing-slider-1.jpg" %} alt="image">
+                            </div>
+                            <div class="item">
+                                <img src={% static  "images/best-thing-slider-1.jpg" %} alt="image">
+                            </div>
+                            <div class="item">
+                                <img src={% static  "images/best-thing-slider-1.jpg" %} alt="image">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="best-thing-model-description">
+                                    <h4>Description</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a pretium ipsum.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae tellus in
+                                        nisl aliquam cursus. Etiam condimentum purus urna, quis fermentum felis finibus
+                                        quis. Integer magna quam, accumsan ac purus at, ultricies sagittis metus. Nulla
+                                        tincidunt commodo egestas Morbi in molestie dui, Aenean feugiat odio eu
+                                        venenatis sollicitudin...! </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="best-thing-model-feature">
+                                    <h4>Features</h4>
+                                    <ul>
+                                        <li>Resturent (152,546)</li>
+                                        <li>Real Estate (35,366)</li>
+                                        <li>Sport (2,546)</li>
+                                        <li>Beauty & Spa (1,546)</li>
+                                        <li>Vehicles (2, 34, 546)</li>
+                                        <li>Shoping (2,546)</li>
+                                        <li>Industry (3,506)</li>
+                                        <li>Dating (12,546)</li>
+                                        <li>Jobs (22,546)</li>
+                                        <li>Other Services (24,567)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="best-thing-model-description">
+                            <h4>Last Review</h4>
+                            <img src={% static  "images/stars-2.png" %} alt="image">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a pretium ipsum. Lorem
+                                ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae tellus in nisl aliquam
+                                cursus. Etiam condimentum purus urna, quis fermentum felis finibus quis. Integer magna
+                                quam, accumsan ac purus at, ultricies sagittis metus. Nulla tincidunt commodo egestas
+                                Morbi in molestie dui, Aenean feugiat odio eu venenatis sollicitudin...! </p>
+
+                            <div class="best-thing-model-btn">
+                                <a href="listing-details.html">More Details</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Popups -->
+
+    <script src={% static "js/jquery.2.2.3.min.js" %}></script>
+    <script src={% static "js/bootstrap.min.js" %}></script>
+    <script src={% static "js/jquery.appear.js" %}></script>
+    <script src={% static "js/jquery-countTo.js" %}></script>
+    <script src={% static "js/owl.carousel.min.js" %}></script>
+    <script src={% static "js/jquery.fancybox.min.js" %}></script>
+    <script src={% static "js/bootsnav.js" %}></script>
+    <script src={% static "js/zelect.js" %}></script>
+    <script src={% static "js/parallaxie.js" %}></script>
+    <script src={% static "js/modernizr.custom.26633.js" %}></script>
+    <script src={% static "js/jquery.gridrotator.js" %}></script>
+    <script src={% static "js/functions.js" %}></script>
+
+</body>
+
+</html>
